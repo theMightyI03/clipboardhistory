@@ -30,7 +30,7 @@ namespace ClipboardHistory
                 if (listBox.Items.Count == 0 || !listBox.Items[0].ToString().StartsWith(clipboardText))
                 {
                     // Füge den neuen Inhalt der Zwischenablage der ListBox hinzu
-                    listBox.Items.Insert(0, clipboardText + ": " + DateTime.Now.ToString("hh:mm:ss"));
+                    listBox.Items.Insert(0, clipboardText + ":  " + DateTime.Now.ToString("hh:mm:ss"));
                 }
                 
             }
@@ -41,7 +41,7 @@ namespace ClipboardHistory
             if (listBox.SelectedItem != null)
             {
                 string selectedItem = listBox.SelectedItem.ToString();
-                string clipboardText = selectedItem.Split(':')[0];
+                string clipboardText = selectedItem.Split(":  ")[0];
                 Clipboard.SetText(clipboardText);
 
                 if (delete)
