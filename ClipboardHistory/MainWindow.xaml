@@ -9,15 +9,21 @@
     <Window.Resources>
         <ResourceDictionary>
             <Style x:Key="ModernWindow" TargetType="Window">
-                <Setter Property="Background" Value="#333" />
-                <Setter Property="Foreground" Value="#fff" />
+                <Setter Property="Background" Value="{x:Static SystemParameters.WindowGlassBrush}" />
+                <Setter Property="Foreground" Value="#000" />
             </Style>
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel>
         <ListBox x:Name="listBox" />
-        <Button x:Name="copyButton" Content="Zur Zwischenablage hinzufügen" Click="copyButton_Click_1" />
-        <Button x:Name="deleteButton" Content="Löschen" Click="deleteButton_Click" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="copyButton" Content="Kopieren" Click="copyButton_Click_1"/>
+            <Button Grid.Column="1" x:Name="deleteButton" Content="Löschen" Click="deleteButton_Click"/>
+        </Grid>
     </StackPanel>
 </Window>
 
