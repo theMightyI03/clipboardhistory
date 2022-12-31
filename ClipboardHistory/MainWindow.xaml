@@ -16,7 +16,8 @@
     </Window.Resources>
     <StackPanel>
         <ListBox x:Name="listBox" />
-        <Button x:Name="copyButton" Content="Copy to clipboard" Click="copyButton_Click_1" />
+        <Button x:Name="copyButton" Content="Zur Zwischenablage hinzufügen" Click="copyButton_Click_1" />
+        <Button x:Name="deleteButton" Content="Löschen" Click="deleteButton_Click" />
     </StackPanel>
 </Window>
 

@@ -34,18 +34,36 @@ namespace ClipboardHistory
                 
             }
         }
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e, bool delete)
         {
             // Kopiere den ausgewählten Eintrag wieder in die Zwischenablage
-            string selectedItem = listBox.SelectedItem.ToString();
-            string clipboardText = selectedItem.Split(':')[0];
-            Clipboard.SetText(clipboardText);
+            if (listBox.SelectedItem != null)
+            {
+                string selectedItem = listBox.SelectedItem.ToString();
+                string clipboardText = selectedItem.Split(':')[0];
+                Clipboard.SetText(clipboardText);
+
+                if (delete)
+                {
+                    int index = listBox.SelectedIndex;
+                    listBox.Items.RemoveAt(index);
+                    Clipboard.Clear();
+                }
+            } else
+            {
+                MessageBox.Show("Kein Item ausgewählt!");
+            }
         }
 
         private void copyButton_Click_1(object sender, RoutedEventArgs e)
         {
             // Kopiere den ausgewählten Eintrag wieder in die Zwischenablage
-            ListBox_SelectionChanged(sender, null);
+            ListBox_SelectionChanged(sender, null, false);
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox_SelectionChanged(sender, null, true);
         }
     }
 }
